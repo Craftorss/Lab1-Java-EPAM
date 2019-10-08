@@ -1,9 +1,7 @@
-package telephone_station;
+package telephoneStation.entity;
 
-import telephone_station.address.Address;
-import telephone_station.subscribersPack.Subscriber;
-import telephone_station.subscribersPack.phone_codes.Phone_Number;
-import telephone_station.subscribersPack.phone_codes.numberGenerator;
+import telephoneStation.entity.phoneCodes.PhoneNumber;
+import telephoneStation.entity.phoneCodes.NumberGenerator;
 
 import java.beans.XMLDecoder;
 import java.beans.XMLEncoder;
@@ -13,8 +11,17 @@ import java.io.Serializable;
 import java.util.List;
 
 public class Station  implements Serializable {
+
+    public String getName() {
+        return Name;
+    }
+
+    public void setName(String name) {
+        Name = name;
+    }
+
     private Address adr;
-    public String Name;
+    private String Name;
     private List<Subscriber> subs;
 
     public Station(){}
@@ -40,10 +47,10 @@ public class Station  implements Serializable {
         this.subs = subs;
     }
 
-    public void AddSub(Subscriber sub, String mobileOperator) {
+    public void addSub(Subscriber sub, String mobileOperator) {
         String number = "";
-        number = numberGenerator.GetNumber(subs);
-        Phone_Number phone = new Phone_Number(sub.getAdr(),mobileOperator, number);
+        number = NumberGenerator.getNumber(subs);
+        PhoneNumber phone = new PhoneNumber(sub.getAdr(),mobileOperator, number);
         sub.setPhoneNumber(phone);
         subs.add(sub);
     }
@@ -55,30 +62,30 @@ public class Station  implements Serializable {
 
     public void NotifySubs() {
         for (Subscriber sub: subs) {
-            sub.StationCall();
+            sub.stationCall();
         }
     }
 
-    public void ShowSubs(){
+    public void showSubs(){
         int i = 0;
         for (Subscriber sub: subs) {
             String buff = "";
             i++;
-            buff += i + ": " + sub.ToString();
+            buff += i + ": " + sub.toShow();
             System.out.println(buff);
         }
     }
 
-    public void ShowSubsFull(){
+    public void showSubsFull(){
         int i = 0;
         for (Subscriber sub: subs) {
             String buff = "";
             i++;
-            buff += i + ": " + sub.ToStringFull();
+            buff += i + ": " + sub.toShowFull();
             System.out.println(buff);
         }
     }
-    public void Save(String fName){
+    public void save(String fName){
         try(XMLEncoder  xmlEncoder = new XMLEncoder(new FileOutputStream(fName+".xml"))){
             xmlEncoder.writeObject(this);
             xmlEncoder.flush();
@@ -87,7 +94,7 @@ public class Station  implements Serializable {
             System.out.println(ex.getMessage());
         }
     }
-    public Station Load(String fName){
+    public Station load(String fName){
         try(XMLDecoder xmlDecoder = new XMLDecoder(new FileInputStream(fName+".xml"))){
             return (Station)xmlDecoder.readObject();
         }

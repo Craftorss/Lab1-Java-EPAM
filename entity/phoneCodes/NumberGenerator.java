@@ -1,24 +1,25 @@
-package telephone_station.subscribersPack.phone_codes;
+package telephoneStation.entity.phoneCodes;
 
-import telephone_station.subscribersPack.Subscriber;
+import telephoneStation.entity.Subscriber;
 
 import java.util.List;
+import java.util.Random;
 
-public final class numberGenerator {
-    private numberGenerator(){};
-    public static String GetNumber(List<Subscriber> subs)
+public final class NumberGenerator {
+    public static String getNumber(List<Subscriber> subs)
     {
         String buff = "";
-        int a = 0;
-        int b = 9;
+        Random ran = new Random();
         boolean fl = false;
         while (!fl) {
             buff = "";
+            StringBuilder sb = new StringBuilder();
             for(int i = 0; i<6; i++)
             {
-                int numb = a + (int)(Math.random()*b);
-                buff+= numb;
+                int numb = ran.nextInt(10);
+                sb.append(numb);
             }
+            buff = sb.toString();
             if (!isIn(subs, buff))
                 fl = true;
         }
@@ -31,7 +32,7 @@ public final class numberGenerator {
         if (subs == null)
             return  bool;
         for (Subscriber sub:subs){
-            if(sub.getPhoneNumber().number == number) {
+            if(sub.getPhoneNumber().getNumber().equals(number)) {
                 bool = true;
                 return  bool;
             }

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="12.0.1" class="java.beans.XMLDecoder">
+ <object class="telephoneStation.entity.Station" id="Station0">
+  <void class="telephoneStation.entity.Station" method="getField">
+   <string>Name</string>
+   <void method="set">
+    <object idref="Station0"/>
+    <string>Ostankino</string>
+   </void>
+  </void>
+  <void property="adr">
+   <object class="telephoneStation.entity.Address" id="Address0">
+    <void class="telephoneStation.entity.Address" method="getField">
+     <string>Country</string>
+     <void method="set">
+      <object idref="Address0"/>
+      <string>Belarus</string>
+     </void>
+    </void>
+    <void class="telephoneStation.entity.Address" method="getField">
+     <string>City</string>
+     <void method="set">
+      <object idref="Address0"/>
+      <string>Minsk</string>
+     </void>
+    </void>
+    <void class="telephoneStation.entity.Address" method="getField">
+     <string>Street</string>
+     <void method="set">
+      <object idref="Address0"/>
+      <string>Leninskaya</string>
+     </void>
+    </void>
+    <void class="telephoneStation.entity.Address" method="getField">
+     <string>homeNumber</string>
+     <void method="set">
+      <object idref="Address0"/>
+      <string>28</string>
+     </void>
+    </void>
+    <void property="flat">
+     <boolean>false</boolean>
+    </void>
+   </object>
+  </void>
+  <void property="subs">
+   <object class="java.util.ArrayList">
+    <void method="add">
+     <object class="telephoneStation.entity.Subscriber" id="Subscriber0">
+      <void class="telephoneStation.entity.Subscriber" method="getField">
+       <string>firstName</string>
+       <void method="set">
+        <object idref="Subscriber0"/>
+        <string>Kirill</string>
+       </void>
+      </void>
+      <void class="telephoneStation.entity.Subscriber" method="getField">
+       <string>middleName</string>
+       <void method="set">
+        <object idref="Subscriber0"/>
+        <string>Nikolaevich</string>
+       </void>
+      </void>
+      <void class="telephoneStation.entity.Subscriber" method="getField">
+       <string>lastName</string>
+       <void method="set">
+        <object idref="Subscriber0"/>
+        <string>Huk</string>
+       </void>
+      </void>
+      <void property="adr">
+       <object class="telephoneStation.entity.Address" id="Address1">
+        <void class="telephoneStation.entity.Address" method="getField">
+         <string>Country</string>
+         <void method="set">
+          <object idref="Address1"/>
+          <string>Belarus</string>
+         </void>
+        </void>
+        <void class="telephoneStation.entity.Address" method="getField">
+         <string>City</string>
+         <void method="set">
+          <object idref="Address1"/>
+          <string>Minsk</string>
+         </void>
+        </void>
+        <void class="telephoneStation.entity.Address" method="getField">
+         <string>Street</string>
+         <void method="set">
+          <object idref="Address1"/>
+          <string>Lenina</string>
+         </void>
+        </void>
+        <void class="telephoneStation.entity.Address" method="getField">
+         <string>homeNumber</string>
+         <void method="set">
+          <object idref="Address1"/>
+          <string>12</string>
+         </void>
+        </void>
+        <void property="flat">
+         <boolean>false</boolean>
+        </void>
+       </object>
+      </void>
+      <void property="phoneNumber">
+       <object class="telephoneStation.entity.phoneCodes.PhoneNumber">
+        <void property="countryCode">
+         <string>+375</string>
+        </void>
+        <void property="fullPhoneNumber">
+         <string>+375-(29)-726032</string>
+        </void>
+        <void property="mobileOperator">
+         <string>29</string>
+        </void>
+        <void property="number">
+         <string>726032</string>
+        </void>
+       </object>
+      </void>
+     </object>
+    </void>
+   </object>
+  </void>
+ </object>
+</java>

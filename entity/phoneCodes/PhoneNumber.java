@@ -1,21 +1,30 @@
-package telephone_station.subscribersPack.phone_codes;
+package telephoneStation.entity.phoneCodes;
 
-import telephone_station.address.Address;
+import telephoneStation.entity.Address;
 
 import java.io.Serializable;
 
-public class Phone_Number  implements Serializable {
+public class PhoneNumber implements Serializable {
 
 
     private String countryCode;
     private String mobileOperator;
-    public String number;
+    private String number;
+    private String fullPhoneNumber;
+
+    public String getNumber() {
+        return number;
+    }
+
+    public void setNumber(String number) {
+        this.number = number;
+    }
 
     public void setFullPhoneNumber(String fullPhoneNumber) {
         this.fullPhoneNumber = fullPhoneNumber;
     }
 
-    private String fullPhoneNumber;
+
 
     public String getFullPhoneNumber() {
         return fullPhoneNumber;
@@ -37,10 +46,10 @@ public class Phone_Number  implements Serializable {
         this.countryCode = countryCode;
     }
 
-    public Phone_Number(){}
+    public PhoneNumber(){}
 
-    public Phone_Number(Address subAdr, String mobileOperator, String number) {
-        switch(subAdr.Country){
+    public PhoneNumber(Address subAdr, String mobileOperator, String number) {
+        switch(subAdr.getCountry()){
             case ("Ukraine"):
                 countryCode = "+380";
                 break;
@@ -50,6 +59,8 @@ public class Phone_Number  implements Serializable {
             case ("Belarus"):
                 countryCode = "+375";
                 break;
+            default:
+                countryCode = "000";
         }
         switch (mobileOperator)
         {
@@ -64,9 +75,12 @@ public class Phone_Number  implements Serializable {
             case("Velcom"):
                 this.mobileOperator = "44";
                 break;
+
+            default:
+                this.mobileOperator = "00";
         }
         this.number = number;
-        fullPhoneNumber = countryCode + "-(" + this.mobileOperator+")-"+number;
+        fullPhoneNumber = countryCode + "-(" + this.mobileOperator+")-" + number;
     }
 
 }
