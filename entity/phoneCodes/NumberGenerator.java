@@ -5,7 +5,18 @@ import telephoneStation.entity.Subscriber;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * Unique phone number generator.
+ * @author Craftorss
+ * @version 1.0
+ */
 public final class NumberGenerator {
+
+    /**
+     * Generates unique number
+     * @param subs - Subscribers list to check number
+     * @return Unique phone number
+     */
     public static String getNumber(List<Subscriber> subs){
         String buff = "";
         Random ran = new Random();
@@ -25,6 +36,12 @@ public final class NumberGenerator {
         return buff;
     }
 
+    /**
+     * Answers if there any subscribers with such number
+     * @param subs - Subscribers list
+     * @param number - generated number
+     * @return is in list or not
+     */
     private static boolean isIn(List<Subscriber> subs, String number)
     {
         if (subs == null)
