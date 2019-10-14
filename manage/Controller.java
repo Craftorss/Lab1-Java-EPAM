@@ -121,7 +121,7 @@ public final class Controller {
         return  new Address(isFlat, Data);
     }
 
-    public static void editSub(Scanner in) throws CantLoadException, WrongInputException {
+    public static void editSub(Scanner in) throws CantLoadException, WrongInputException, SaveFailedException {
         Station myStation = (Station) MyDAO.getData();
         System.out.println("Choose one:");
         System.out.println(myStation.showSubs());
@@ -148,5 +148,6 @@ public final class Controller {
             default:
                 System.out.println("You did nothing");
         }
+        MyDAO.pullData(myStation);
     }
 }

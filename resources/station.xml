@@ -78,51 +78,6 @@
       <void property="adr">
        <object class="telephoneStation.entity.Address">
         <void property="city">
-         <string>Minsk</string>
-        </void>
-        <void property="country">
-         <string>Belarus</string>
-        </void>
-        <void property="homeNumber">
-         <string>12</string>
-        </void>
-        <void property="street">
-         <string>Lenina</string>
-        </void>
-       </object>
-      </void>
-      <void property="firstName">
-       <string>Kirill</string>
-      </void>
-      <void property="lastName">
-       <string>Huk</string>
-      </void>
-      <void property="patronymic">
-       <string>Nikolaevich</string>
-      </void>
-      <void property="phoneNumber">
-       <object class="telephoneStation.entity.phoneCodes.PhoneNumber">
-        <void property="countryCode">
-         <string>+375</string>
-        </void>
-        <void property="fullPhoneNumber">
-         <string>+375-(29)-494417</string>
-        </void>
-        <void property="mobileOperator">
-         <string>29</string>
-        </void>
-        <void property="number">
-         <string>494417</string>
-        </void>
-       </object>
-      </void>
-     </object>
-    </void>
-    <void method="add">
-     <object class="telephoneStation.entity.Subscriber">
-      <void property="adr">
-       <object class="telephoneStation.entity.Address">
-        <void property="city">
          <string>Kiev</string>
         </void>
         <void property="country">
@@ -164,6 +119,51 @@
         </void>
         <void property="number">
          <string>295687</string>
+        </void>
+       </object>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="telephoneStation.entity.Subscriber">
+      <void property="adr">
+       <object class="telephoneStation.entity.Address">
+        <void property="city">
+         <string>Minsk</string>
+        </void>
+        <void property="country">
+         <string>Belarus</string>
+        </void>
+        <void property="homeNumber">
+         <string>12</string>
+        </void>
+        <void property="street">
+         <string>Lenina</string>
+        </void>
+       </object>
+      </void>
+      <void property="firstName">
+       <string>Kirill</string>
+      </void>
+      <void property="lastName">
+       <string>Huk</string>
+      </void>
+      <void property="patronymic">
+       <string>Nikolaevich</string>
+      </void>
+      <void property="phoneNumber">
+       <object class="telephoneStation.entity.phoneCodes.PhoneNumber">
+        <void property="countryCode">
+         <string>+375</string>
+        </void>
+        <void property="fullPhoneNumber">
+         <string>+375-(29)-494417</string>
+        </void>
+        <void property="mobileOperator">
+         <string>29</string>
+        </void>
+        <void property="number">
+         <string>494417</string>
         </void>
        </object>
       </void>
