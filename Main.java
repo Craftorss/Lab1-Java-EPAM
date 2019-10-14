@@ -55,8 +55,12 @@ public class Main {
                     default:
                         System.out.println("You got nothing");
                 }
-            } catch (WrongInputException | SaveFailedException | WrongArgumentsException e) {
+            } catch (SaveFailedException | WrongArgumentsException e) {
                 System.out.println(e.getMessage());
+            }
+            catch (WrongInputException e){
+                System.out.println(e.getMessage());
+                in.next();
             }
             catch (CantLoadException ex) {
                 try {
@@ -73,14 +77,14 @@ public class Main {
         }
     }
 
-    public static void init() throws WrongArgumentsException {
+    private static void init() throws WrongArgumentsException {
         myStation = new Station("Ostankino",
                     new Address(false, new String[]{"Belarus", "Minsk","Leninskaya","28"}),
                     new ArrayList<Subscriber>());
     }
 
-    public static void printMenu(){
+    private static void printMenu(){
         System.out.println("\n1: Add\n2: Remove\n3: Edit.\n4: Exit\n5: Show\n6: Show full\n" +
-                           "7: Clear Subs\n8: Sort\n9: New Station\nSelect anything.");
+                           "7: Clear Subs\n8: Sort\n9: New Station");
     }
 }
