@@ -1,14 +1,24 @@
 package telephoneStation.entity;
 
+import telephoneStation.exceptions.WrongArgumentsException;
+
 import java.io.Serializable;
 
 public class Address implements Serializable {
-    private String homeNumber;
     private String country;
     private String city;
+    private String homeNumber;
     private String street;
     private String flatNumber;
     private boolean isFlat;
+
+    public String getHomeNumber() {
+        return homeNumber;
+    }
+
+    public void setHomeNumber(String homeNumber) {
+        this.homeNumber = homeNumber;
+    }
 
     public String getCountry() {
         return country;
@@ -34,14 +44,6 @@ public class Address implements Serializable {
         this.street = street;
     }
 
-    public String getHomeNumber() {
-        return homeNumber;
-    }
-
-    public void setHomeNumber(String homeNumber) {
-        this.homeNumber = homeNumber;
-    }
-
     public String getFlatNumber() {
         return flatNumber;
     }
@@ -50,27 +52,27 @@ public class Address implements Serializable {
         this.flatNumber = flatNumber;
     }
 
-    public boolean getFlat() {
+    public boolean isFlat() {
         return isFlat;
     }
 
-    public void setFlat(Boolean flat) {
+    public void setFlat(boolean flat) {
         isFlat = flat;
     }
 
-    public Address(){}
-    public Address(boolean isFlat, String[] data){
+    public Address(){};
+    public Address(boolean isFlat, String[] data) throws WrongArgumentsException{
         this.isFlat = isFlat;
 
         if (isFlat){
             if (data.length < 5)
-                throw new IllegalArgumentException("Not enough arguments");
+                throw new WrongArgumentsException();
             else
                 flatNumber = data[4];
         }
 
         if ((!isFlat) && (data.length < 4))
-            throw new IllegalArgumentException("Not enough arguments");
+            throw new WrongArgumentsException();
 
         country = data[0];
         city = data[1];

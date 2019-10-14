@@ -4,7 +4,13 @@ import telephoneStation.entity.phoneCodes.PhoneNumber;
 
 import java.io.Serializable;
 
-public class Subscriber implements Serializable {
+public class Subscriber implements Serializable, Comparable {
+    private String firstName;
+    private String lastName;
+    private String patronymic;
+    private PhoneNumber phoneNumber;
+    private Address Adr;
+
     public String getFirstName() {
         return firstName;
     }
@@ -13,13 +19,6 @@ public class Subscriber implements Serializable {
         this.firstName = firstName;
     }
 
-    public String getMiddleName() {
-        return middleName;
-    }
-
-    public void setMiddleName(String middleName) {
-        this.middleName = middleName;
-    }
     public String getLastName() {
         return lastName;
     }
@@ -28,26 +27,12 @@ public class Subscriber implements Serializable {
         this.lastName = lastName;
     }
 
-    private String firstName;
-    private String middleName;
-    private String lastName;
-    private PhoneNumber phoneNumber;
-    private Address Adr;
-
-    public Subscriber(){}
-    public Subscriber (String fName, String mName, String lName, Address adr){
-        this.firstName = fName;
-        this.lastName = lName;
-        this.middleName = mName;
-        this.Adr = adr;
+    public String getPatronymic() {
+        return patronymic;
     }
 
-    public PhoneNumber getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(PhoneNumber phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setPatronymic(String patronymic) {
+        this.patronymic = patronymic;
     }
 
     public Address getAdr() {
@@ -58,19 +43,52 @@ public class Subscriber implements Serializable {
         Adr = adr;
     }
 
-    public void stationCall() {
-        System.out.println(firstName + " " + lastName +"answer");
+    public PhoneNumber getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(PhoneNumber phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public Subscriber(){};
+    public Subscriber (String fName, String patronymic, String lName, Address adr){
+        this.firstName = fName;
+        this.lastName = lName;
+        this.patronymic = patronymic;
+        this.Adr = adr;
     }
 
     public String toShow()
     {
-        return firstName + " " + middleName + " " + lastName + " "
-                + this.getPhoneNumber().getFullPhoneNumber();
+        return lastName + " " + firstName + " " + patronymic + " "  +
+                this.getPhoneNumber().getFullPhoneNumber();
     }
 
     public String toShowFull()
     {
-        return firstName + " " + middleName + " " + lastName + " " + this.getAdr().getFullAddress() + " "
-                + this.getPhoneNumber().getFullPhoneNumber();
+        return lastName + " " + firstName + " " + patronymic + " " +
+                this.getAdr().getFullAddress() + " " +
+                this.getPhoneNumber().getFullPhoneNumber();
+    }
+
+    public void stationCall() {
+        System.out.println(firstName + " " + lastName +"answers");
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        if (!(o instanceof Subscriber))
+            return -1;
+        int first = ((Subscriber) o).getLastName().compareTo(this.lastName);
+        if (first != 0)
+            return first;
+
+        first = ((Subscriber) o).getFirstName().compareTo(this.firstName);
+        if (first != 0)
+            return first;
+
+        first = ((Subscriber) o).getPatronymic().compareTo(this.patronymic);
+        return first;
     }
 }

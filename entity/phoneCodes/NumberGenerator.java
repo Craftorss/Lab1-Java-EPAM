@@ -6,8 +6,7 @@ import java.util.List;
 import java.util.Random;
 
 public final class NumberGenerator {
-    public static String getNumber(List<Subscriber> subs)
-    {
+    public static String getNumber(List<Subscriber> subs){
         String buff = "";
         Random ran = new Random();
         boolean fl = false;
@@ -28,15 +27,13 @@ public final class NumberGenerator {
 
     private static boolean isIn(List<Subscriber> subs, String number)
     {
-        boolean bool = false;
         if (subs == null)
-            return  bool;
+            return  false;
         for (Subscriber sub:subs){
             if(sub.getPhoneNumber().getNumber().equals(number)) {
-                bool = true;
-                return  bool;
+                return true;
             }
         }
-        return bool;
+        return false;
     }
 }

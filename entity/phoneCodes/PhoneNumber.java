@@ -24,8 +24,6 @@ public class PhoneNumber implements Serializable {
         this.fullPhoneNumber = fullPhoneNumber;
     }
 
-
-
     public String getFullPhoneNumber() {
         return fullPhoneNumber;
     }
@@ -46,8 +44,7 @@ public class PhoneNumber implements Serializable {
         this.countryCode = countryCode;
     }
 
-    public PhoneNumber(){}
-
+    public PhoneNumber(){};
     public PhoneNumber(Address subAdr, String mobileOperator, String number) {
         switch(subAdr.getCountry()){
             case ("Ukraine"):
