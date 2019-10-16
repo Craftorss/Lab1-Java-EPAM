@@ -5,13 +5,15 @@ import telephoneStation.entity.Subscriber;
 import java.util.List;
 import java.util.Random;
 
+import static telephoneStation.constants.ProgramConstants.MAX_NUMBER;
+import static telephoneStation.constants.ProgramConstants.MAX_RANDOM;
+
 /**
  * Unique phone number generator.
  * @author Craftorss
  * @version 1.0
  */
 public final class NumberGenerator {
-
     /**
      * Generates unique number
      * @param subs - Subscribers list to check number
@@ -24,9 +26,9 @@ public final class NumberGenerator {
         while (!fl) {
             buff = "";
             StringBuilder sb = new StringBuilder();
-            for(int i = 0; i<6; i++)
+            for(int i = 0; i< MAX_NUMBER; i++)
             {
-                int numb = ran.nextInt(10);
+                int numb = ran.nextInt(MAX_RANDOM);
                 sb.append(numb);
             }
             buff = sb.toString();

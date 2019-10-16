@@ -1,7 +1,5 @@
 package telephoneStation.entity;
 
-import telephoneStation.exceptions.WrongArgumentsException;
-
 import java.io.Serializable;
 
 public class Address implements Serializable {
@@ -61,32 +59,19 @@ public class Address implements Serializable {
     }
 
     public Address(){};
-    public Address(boolean isFlat, String[] data) throws WrongArgumentsException{
+    public Address(boolean isFlat, String country, String city, String street, String homeNumber){
         this.isFlat = isFlat;
-
-        if (isFlat){
-            if (data.length < 5)
-                throw new WrongArgumentsException();
-            else
-                flatNumber = data[4];
-        }
-
-        if ((!isFlat) && (data.length < 4))
-            throw new WrongArgumentsException();
-
-        country = data[0];
-        city = data[1];
-        street = data[2];
-        homeNumber = data[3];
+        this.country = country;
+        this.city = city;
+        this.street = street;
+        this.homeNumber = homeNumber;
     }
-
-    public String getFullAddress(){
-        String buff = "";
-        buff += "Country : " + country + "; " + "City: " + city + "; " + "Street: " + street + "; ";
-        if (isFlat)
-            buff += "Flat: " + flatNumber +"; ";
-        buff += "Home: " + homeNumber + ".";
-
-        return buff;
+    public Address(boolean isFlat, String country, String city, String street, String homeNumber, String flatNumber){
+        this.isFlat = isFlat;
+        this.country = country;
+        this.city = city;
+        this.street = street;
+        this.homeNumber = homeNumber;
+        this.flatNumber = flatNumber;
     }
 }

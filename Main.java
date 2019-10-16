@@ -12,7 +12,10 @@ import telephoneStation.manage.Controller;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import static telephoneStation.constants.ProgramConstants.*;
+
 public class Main {
+
     private static Station myStation;
     private static boolean isNotEnd = true;
     private static Scanner in = new Scanner(System.in);
@@ -22,7 +25,7 @@ public class Main {
         while (isNotEnd) {
             printMenu();
             try {
-                int choice = Controller.chooseFromMenu(1, 9, in);
+                int choice = Controller.chooseFromMenu(MENU_MIN, MAIN_MENU_MAX, in);
                 switch (choice) {
                     case 1:
                         Controller.addSub(in);
@@ -53,7 +56,7 @@ public class Main {
                         isNotEnd = false;
                         break;
                     default:
-                        System.out.println("You got nothing");
+                        System.out.println(MAIN_MENU_DEFAULT_MESS);
                 }
             } catch (SaveFailedException | WrongArgumentsException e) {
                 System.out.println(e.getMessage());
@@ -79,12 +82,11 @@ public class Main {
 
     private static void init() throws WrongArgumentsException {
         myStation = new Station("Ostankino",
-                    new Address(false, new String[]{"Belarus", "Minsk","Leninskaya","28"}),
+                    new Address(false, "Belarus", "Minsk","Leninskaya","28"),
                     new ArrayList<Subscriber>());
     }
 
     private static void printMenu(){
-        System.out.println("\n1: Add\n2: Remove\n3: Edit.\n4: Exit\n5: Show\n6: Show full\n" +
-                           "7: Clear Subs\n8: Sort\n9: New Station");
+        System.out.println(MENU);
     }
 }

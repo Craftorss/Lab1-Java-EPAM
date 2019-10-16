@@ -59,23 +59,6 @@ public class Subscriber implements Serializable, Comparable {
         this.Adr = adr;
     }
 
-    public String toShow()
-    {
-        return lastName + " " + firstName + " " + patronymic + " "  +
-                this.getPhoneNumber().getFullPhoneNumber();
-    }
-
-    public String toShowFull()
-    {
-        return lastName + " " + firstName + " " + patronymic + " " +
-                this.getAdr().getFullAddress() + " " +
-                this.getPhoneNumber().getFullPhoneNumber();
-    }
-
-    public void stationCall() {
-        System.out.println(firstName + " " + lastName +"answers");
-    }
-
     @Override
     public int compareTo(Object o) {
         if (!(o instanceof Subscriber))

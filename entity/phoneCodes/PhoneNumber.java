@@ -4,6 +4,9 @@ import telephoneStation.entity.Address;
 
 import java.io.Serializable;
 
+import static telephoneStation.entity.phoneCodes.PhoneNumberConstants.Countries;
+import static telephoneStation.entity.phoneCodes.PhoneNumberConstants.MobileOperators;
+
 public class PhoneNumber implements Serializable {
 
 
@@ -46,36 +49,23 @@ public class PhoneNumber implements Serializable {
 
     public PhoneNumber(){};
     public PhoneNumber(Address subAdr, String mobileOperator, String number) {
-        switch(subAdr.getCountry()){
-            case ("Ukraine"):
-                countryCode = "+380";
-                break;
-            case ("Russia"):
-                countryCode = "+7";
-                break;
-            case ("Belarus"):
-                countryCode = "+375";
-                break;
-            default:
-                countryCode = "000";
+
+        Countries[] countries = Countries.values();
+        for (Countries country : countries) {
+            if (country.getCountryName().equals(subAdr.getCountry()))
+                this.countryCode = country.getCountryCode();
         }
-        switch (mobileOperator)
-        {
-            case ("Life"):
-                this.mobileOperator = "25";
-                break;
 
-            case("МТС"):
-                this.mobileOperator = "29";
-                break;
-
-            case("Velcom"):
-                this.mobileOperator = "44";
-                break;
-
-            default:
-                this.mobileOperator = "00";
+        MobileOperators[] mobileOperators = MobileOperators.values();
+        for (MobileOperators operators : mobileOperators) {
+            if (operators.getOperatorName().equals(mobileOperator))
+                this.mobileOperator = operators.getOperatorCode();
         }
+
+        if(this.countryCode == null)
+            countryCode = "00";
+        if(this.mobileOperator == null)
+            this.mobileOperator = "00";
         this.number = number;
         fullPhoneNumber = countryCode + "-(" + this.mobileOperator+")-" + number;
     }
