@@ -4,9 +4,8 @@ import telephoneStation.entity.Address;
 import telephoneStation.entity.Station;
 import telephoneStation.entity.Subscriber;
 import telephoneStation.entity.phoneCodes.PhoneNumberConstants;
-import telephoneStation.exceptions.CantLoadException;
-import telephoneStation.exceptions.SaveFailedException;
-import telephoneStation.exceptions.WrongArgumentsException;
+import telephoneStation.exceptions.DaoGetException;
+import telephoneStation.exceptions.DaoSaveException;
 import telephoneStation.exceptions.WrongInputException;
 import telephoneStation.extendsEntity.StationProcessing;
 import telephoneStation.stationDAO.MyDAO;
@@ -26,7 +25,6 @@ public final class Controller {
             try {
                 buff = in.nextInt();
             } catch (InputMismatchException ex) {
-                //log
                 throw new WrongInputException();
             }
             if (buff <= max && buff >= min)
@@ -35,29 +33,29 @@ public final class Controller {
         return buff;
     }
 
-    public static String showSubs() throws CantLoadException {
+    public static String showSubs() throws DaoGetException {
         Station myStation =  MyDAO.getData();
         return StationProcessing.showSubs(myStation);
     }
 
-    public static String showSubsFull() throws CantLoadException {
+    public static String showSubsFull() throws DaoGetException {
         Station myStation = MyDAO.getData();
         return StationProcessing.showSubsFull(myStation);
     }
 
-    public static void clearSubs() throws CantLoadException, SaveFailedException {
+    public static void clearSubs() throws DaoGetException, DaoSaveException {
         Station myStation = MyDAO.getData();
         myStation.getSubs().clear();
         MyDAO.pullData(myStation);
     }
 
-    public static void sortSubs() throws CantLoadException, SaveFailedException {
+    public static void sortSubs() throws DaoGetException, DaoSaveException {
         Station myStation = MyDAO.getData();
         myStation.getSubs().sort(Subscriber::compareTo);
         MyDAO.pullData(myStation);
     }
 
-    public static void removeSub(Scanner in) throws CantLoadException, WrongInputException, SaveFailedException {
+    public static void removeSub(Scanner in) throws WrongInputException, DaoGetException, DaoSaveException {
         Station myStation = MyDAO.getData();
         System.out.println(CHOOSE_ONE);
         System.out.println(StationProcessing.showSubs(myStation));
@@ -69,12 +67,12 @@ public final class Controller {
         MyDAO.pullData(myStation);
     }
 
-    public static void initPull(Station station) throws SaveFailedException {
+    public static void initPull(Station station) throws DaoSaveException {
         MyDAO.pullData(station);
     }
 
-    public static void addSub(Scanner in) throws CantLoadException, WrongInputException, SaveFailedException,
-                                                 WrongArgumentsException {
+    public static void addSub(Scanner in) throws WrongInputException,
+                                                 DaoGetException, DaoSaveException {
         Station myStation = MyDAO.getData();
         String fName;
         String patronymic;
@@ -107,7 +105,7 @@ public final class Controller {
         return "";
     }
 
-    private static Address getAdr(Scanner in) throws WrongInputException, WrongArgumentsException {
+    private static Address getAdr(Scanner in) throws WrongInputException {
         System.out.println(GET_ADDRESS_MENU);
         int choice = (chooseFromMenu(MENU_MIN,2, in));
         String[] Data = new String[5];
@@ -126,8 +124,8 @@ public final class Controller {
         }
     }
 
-    public static void editSub(Scanner in) throws CantLoadException, WrongInputException, SaveFailedException {
-        Station myStation = (Station) MyDAO.getData();
+    public static void editSub(Scanner in) throws WrongInputException, DaoGetException, DaoSaveException {
+        Station myStation = MyDAO.getData();
         System.out.println(CHOOSE_ONE);
         System.out.println(StationProcessing.showSubs(myStation));
         System.out.println(myStation.getSubs().size()+1 + ": " + EDIT_END_WORDS);

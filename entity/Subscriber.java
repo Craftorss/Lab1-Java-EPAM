@@ -51,7 +51,7 @@ public class Subscriber implements Serializable, Comparable {
         this.phoneNumber = phoneNumber;
     }
 
-    public Subscriber(){};
+    public Subscriber(){}
     public Subscriber (String fName, String patronymic, String lName, Address adr){
         this.firstName = fName;
         this.lastName = lName;
@@ -63,15 +63,15 @@ public class Subscriber implements Serializable, Comparable {
     public int compareTo(Object o) {
         if (!(o instanceof Subscriber))
             return -1;
-        int first = ((Subscriber) o).getLastName().compareTo(this.lastName);
+        int first = this.lastName.compareTo(((Subscriber) o).getLastName());
         if (first != 0)
             return first;
 
-        first = ((Subscriber) o).getFirstName().compareTo(this.firstName);
+        first = this.firstName.compareTo(((Subscriber) o).getFirstName());
         if (first != 0)
             return first;
 
-        first = ((Subscriber) o).getPatronymic().compareTo(this.patronymic);
+        first = this.patronymic.compareTo(((Subscriber) o).getPatronymic());
         return first;
     }
 }

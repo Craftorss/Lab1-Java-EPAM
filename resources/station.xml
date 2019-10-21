@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="12.0.1" class="java.beans.XMLDecoder">
+ <object class="telephoneStation.entity.Station">
+  <void property="adr">
+   <object class="telephoneStation.entity.Address">
+    <void property="city">
+     <string>Minsk</string>
+    </void>
+    <void property="country">
+     <string>Belarus</string>
+    </void>
+    <void property="homeNumber">
+     <string>28</string>
+    </void>
+    <void property="street">
+     <string>Leninskaya</string>
+    </void>
+   </object>
+  </void>
+  <void property="name">
+   <string>Ostankino</string>
+  </void>
+  <void property="subs">
+   <object class="java.util.ArrayList">
+    <void method="add">
+     <object class="telephoneStation.entity.Subscriber">
+      <void property="adr">
+       <object class="telephoneStation.entity.Address">
+        <void property="city">
+         <string>a</string>
+        </void>
+        <void property="country">
+         <string>a</string>
+        </void>
+        <void property="flat">
+         <boolean>true</boolean>
+        </void>
+        <void property="homeNumber">
+         <string>2</string>
+        </void>
+        <void property="street">
+         <string>d</string>
+        </void>
+       </object>
+      </void>
+      <void property="firstName">
+       <string>Kir</string>
+      </void>
+      <void property="lastName">
+       <string>C</string>
+      </void>
+      <void property="patronymic">
+       <string>Kd</string>
+      </void>
+      <void property="phoneNumber">
+       <object class="telephoneStation.entity.phoneCodes.PhoneNumber">
+        <void property="countryCode">
+         <string>00</string>
+        </void>
+        <void property="fullPhoneNumber">
+         <string>00-(25)-015444</string>
+        </void>
+        <void property="mobileOperator">
+         <string>25</string>
+        </void>
+        <void property="number">
+         <string>015444</string>
+        </void>
+       </object>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="telephoneStation.entity.Subscriber">
+      <void property="adr">
+       <object class="telephoneStation.entity.Address">
+        <void property="city">
+         <string>d</string>
+        </void>
+        <void property="country">
+         <string>d</string>
+        </void>
+        <void property="flat">
+         <boolean>true</boolean>
+        </void>
+        <void property="flatNumber">
+         <string>3</string>
+        </void>
+        <void property="homeNumber">
+         <string>2</string>
+        </void>
+        <void property="street">
+         <string>d</string>
+        </void>
+       </object>
+      </void>
+      <void property="firstName">
+       <string>Slav</string>
+      </void>
+      <void property="lastName">
+       <string>Dal</string>
+      </void>
+      <void property="patronymic">
+       <string>A</string>
+      </void>
+      <void property="phoneNumber">
+       <object class="telephoneStation.entity.phoneCodes.PhoneNumber">
+        <void property="countryCode">
+         <string>00</string>
+        </void>
+        <void property="fullPhoneNumber">
+         <string>00-(25)-544223</string>
+        </void>
+        <void property="mobileOperator">
+         <string>25</string>
+        </void>
+        <void property="number">
+         <string>544223</string>
+        </void>
+       </object>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="telephoneStation.entity.Subscriber">
+      <void property="adr">
+       <object class="telephoneStation.entity.Address">
+        <void property="city">
+         <string>Minsk</string>
+        </void>
+        <void property="country">
+         <string>Belarus</string>
+        </void>
+        <void property="flat">
+         <boolean>true</boolean>
+        </void>
+        <void property="homeNumber">
+         <string>2</string>
+        </void>
+        <void property="street">
+         <string>Lenina</string>
+        </void>
+       </object>
+      </void>
+      <void property="firstName">
+       <string>Kirill</string>
+      </void>
+      <void property="lastName">
+       <string>Nikolaevich</string>
+      </void>
+      <void property="patronymic">
+       <string>Huk</string>
+      </void>
+      <void property="phoneNumber">
+       <object class="telephoneStation.entity.phoneCodes.PhoneNumber">
+        <void property="countryCode">
+         <string>+375</string>
+        </void>
+        <void property="fullPhoneNumber">
+         <string>+375-(29)-244223</string>
+        </void>
+        <void property="mobileOperator">
+         <string>29</string>
+        </void>
+        <void property="number">
+         <string>244223</string>
+        </void>
+       </object>
+      </void>
+     </object>
+    </void>
+   </object>
+  </void>
+ </object>
+</java>

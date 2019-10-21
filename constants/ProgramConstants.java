@@ -9,6 +9,8 @@ public final class ProgramConstants {
                                       "5: Show" + N + "6: Show full" + N + "7: Clear Subs" + N +
                                       "8: Sort" + N + "9: New Station";
 
+    public static final String MAIN_LOG_FILE_FULL_PATH = "E:/JavaLabs_Epam/src/telephoneStation/Logfile.txt";
+
     public static final String ENTER_FIRST_NAME = "Enter first name";
     public static final String ENTER_MIDDLE_NAME = "Enter middle name";
     public static final String ENTER_LAST_NAME = "Enter last name";

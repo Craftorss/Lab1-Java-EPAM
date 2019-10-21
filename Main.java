@@ -2,15 +2,18 @@ package telephoneStation;
 
 import telephoneStation.entity.Address;
 import telephoneStation.entity.Station;
-import telephoneStation.entity.Subscriber;
-import telephoneStation.exceptions.CantLoadException;
-import telephoneStation.exceptions.SaveFailedException;
-import telephoneStation.exceptions.WrongArgumentsException;
+import telephoneStation.exceptions.DaoGetException;
+import telephoneStation.exceptions.DaoSaveException;
 import telephoneStation.exceptions.WrongInputException;
 import telephoneStation.manage.Controller;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.logging.FileHandler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
 
 import static telephoneStation.constants.ProgramConstants.*;
 
@@ -19,9 +22,10 @@ public class Main {
     private static Station myStation;
     private static boolean isNotEnd = true;
     private static Scanner in = new Scanner(System.in);
+    private static Logger logger = Logger.getLogger("StationLog");
 
     public static void main(String[] args) {
-
+        setupLogger();
         while (isNotEnd) {
             printMenu();
             try {
@@ -58,35 +62,41 @@ public class Main {
                     default:
                         System.out.println(MAIN_MENU_DEFAULT_MESS);
                 }
-            } catch (SaveFailedException | WrongArgumentsException e) {
-                System.out.println(e.getMessage());
-            }
-            catch (WrongInputException e){
-                System.out.println(e.getMessage());
+            } catch (DaoSaveException e) {
+                logger.log(Level.SEVERE,e.getMessage());
+            } catch (WrongInputException e) {
+                logger.log(Level.SEVERE,e.getMessage());
                 in.next();
-            }
-            catch (CantLoadException ex) {
-                try {
-                    init();
-                } catch (WrongArgumentsException e) {
-                    System.out.println(e.getMessage());
-                }
+            } catch (DaoGetException ex) {
+                init();
                 try {
                     Controller.initPull(myStation);
-                } catch (SaveFailedException e) {
-                    System.out.println(e.getMessage());
+                } catch (DaoSaveException e) {
+                    logger.log(Level.SEVERE,e.getMessage());
                 }
             }
         }
     }
 
-    private static void init() throws WrongArgumentsException {
+    private static void init() {
         myStation = new Station("Ostankino",
-                    new Address(false, "Belarus", "Minsk","Leninskaya","28"),
-                    new ArrayList<Subscriber>());
+                new Address(false, "Belarus", "Minsk", "Leninskaya", "28"),
+                new ArrayList<>());
     }
 
-    private static void printMenu(){
+    private static void printMenu() {
         System.out.println(MENU);
     }
-}
+
+    private static void setupLogger() {
+        logger.setLevel(Level.ALL);
+        try {
+            FileHandler fHandler = new FileHandler(MAIN_LOG_FILE_FULL_PATH);
+            SimpleFormatter sFormatter = new SimpleFormatter();
+            fHandler.setFormatter(sFormatter);
+            logger.addHandler(fHandler);
+        } catch (IOException | SecurityException ex) {
+            logger.log(Level.SEVERE, ex.getMessage(), ex);
+        }
+    }
+    }
