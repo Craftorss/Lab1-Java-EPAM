@@ -153,4 +153,9 @@ public final class Controller {
         }
         MyDAO.pullData(myStation);
     }
+
+    public static void saveForExport() throws DaoGetException, DaoSaveException {
+        Station myStation = MyDAO.getData();
+        MyDAO.pullDataForExport(myStation);
+    }
 }

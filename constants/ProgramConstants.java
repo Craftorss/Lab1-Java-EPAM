@@ -2,12 +2,13 @@ package telephoneStation.constants;
 
 public final class ProgramConstants {
     public static final int MENU_MIN = 1;
-    public static final int MAIN_MENU_MAX = 9;
+    public static final int MAIN_MENU_MAX = 11;
     public static final String MAIN_MENU_DEFAULT_MESS = "You got nothing";
     public static final String N = "\n";
     public static final String MENU = "1: Add"+ N + "2: Remove" + N + "3: Edit." + N + "4: Exit" + N +
                                       "5: Show" + N + "6: Show full" + N + "7: Clear Subs" + N +
-                                      "8: Sort" + N + "9: New Station";
+                                      "8: Sort" + N + "9: New Station" + N +"10: SaveForExport" + N +
+                                      "11: Validate";
 
     public static final String MAIN_LOG_FILE_FULL_PATH = "E:/JavaLabs_Epam/src/telephoneStation/Logfile.txt";
 

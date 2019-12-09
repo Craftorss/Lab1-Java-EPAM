@@ -16,6 +16,7 @@ import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 
 import static telephoneStation.constants.ProgramConstants.*;
+import static telephoneStation.validator.XML_Validator.checkSchemeXML;
 
 public class Main {
 
@@ -23,6 +24,8 @@ public class Main {
     private static boolean isNotEnd = true;
     private static Scanner in = new Scanner(System.in);
     private static Logger logger = Logger.getLogger("StationLog");
+    private static final String xmlPath = "./src/telephoneStation/resources/stationExp.xml";
+    private static final String xsdPath = "./src/telephoneStation/resources/stationXSD.xsd";
 
     public static void main(String[] args) {
         setupLogger();
@@ -55,6 +58,13 @@ public class Main {
                     case 9:
                         init();
                         Controller.initPull(myStation);
+                        break;
+                    case 10:
+                        Controller.saveForExport();
+                        break;
+                    case 11:
+                        boolean d = checkSchemeXML(xmlPath, xsdPath);
+                        System.out.println(d);
                         break;
                     case 4:
                         isNotEnd = false;
@@ -99,4 +109,4 @@ public class Main {
             logger.log(Level.SEVERE, ex.getMessage(), ex);
         }
     }
-    }
+}

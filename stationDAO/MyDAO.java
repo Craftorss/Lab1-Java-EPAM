@@ -5,14 +5,18 @@ import telephoneStation.exceptions.CantLoadException;
 import telephoneStation.exceptions.DaoGetException;
 import telephoneStation.exceptions.DaoSaveException;
 import telephoneStation.services.Deserializer;
+import telephoneStation.services.Serializer;
 
 import java.beans.XMLEncoder;
 import java.io.FileOutputStream;
+import java.sql.Connection;
 
 public class MyDAO {
     private static final String path = "./src/telephoneStation/resources/";
     private static final String fileName = "station";
     private static final String ext = ".xml";
+    private static final String fileNameForExp = "stationExp";
+    private static Connection con = null;
 
     public static Station getData() throws DaoGetException {
         try {
@@ -29,6 +33,14 @@ public class MyDAO {
             xmlEncoder.flush();
         }
         catch(Exception ex){
+            throw new DaoSaveException();
+        }
+    }
+
+    public static void pullDataForExport(Station station) throws DaoSaveException {
+        try {
+            Serializer.pullSubscribers(station, path + fileNameForExp + ext);
+        } catch (Exception ex) {
             throw new DaoSaveException();
         }
     }
